@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export const Hero = () => {
   return (
-    <section className="relative pt-40 pb-20 px-10 overflow-hidden">
+    <section className="relative pt-48 pb-32 px-8 md:px-10 overflow-hidden">
       {/* Background Subtle Spotlight */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-accent/5 blur-[120px] rounded-full pointer-events-none -z-10" />
 
@@ -35,10 +35,10 @@ export const Hero = () => {
             <div className="flex gap-4">
               <div className="h-24 w-44 bg-zinc-900/50 backdrop-blur-sm border border-border/50 rounded-sharp flex flex-col justify-start px-6 group hover:border-accent/40 transition-colors">
                 <span className="mono text-[10px] text-muted mb-1 uppercase tracking-tight">
-                  Lighthouse score
+                  UX Consistency
                 </span>
                 <span className="text-3xl font-bold font-display text-secondary group-hover:text-accent transition-colors">
-                  100<span className="text-muted text-lg">/100</span>
+                  Atomic Design
                 </span>
               </div>
               <div className="h-24 w-44 bg-zinc-900/50 backdrop-blur-sm border border-border/50 rounded-sharp flex flex-col justify-start px-6 group hover:border-accent/40 transition-colors">
@@ -46,7 +46,7 @@ export const Hero = () => {
                   Years Exp.
                 </span>
                 <span className="text-3xl font-bold font-display text-secondary group-hover:text-accent transition-colors">
-                  06+ <span className="text-muted text-lg">YRS</span>
+                  6+
                 </span>
               </div>
             </div>

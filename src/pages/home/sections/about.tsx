@@ -3,7 +3,7 @@ import profileImg from "../../../assets/images/profile-portrait.jpeg";
 
 export const About = () => {
   return (
-    <section id="about" className="py-20 px-10 border-t border-border">
+    <section id="about" className="py-32 px-8 md:px-10 border-t border-border">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -73,10 +73,10 @@ export const About = () => {
             <img
               src={profileImg}
               alt="Manish Kushwah Portrait"
-              className="w-full h-full object-cover object-[center_18%] grayscale hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 group-hover:scale-100"
+              className="w-full h-full object-cover object-[center_18%] grayscale group-hover:grayscale-0 group-active:grayscale-0 transition-all duration-700 ease-in-out scale-105 group-hover:scale-100 group-active:scale-100"
             />
           </div>
-          <div className="absolute -bottom-4 -right-4 h-24 w-24 bg-accent/10 border border-border rounded-sharp -z-10 transition-transform group-hover:translate-x-2 group-hover:translate-y-2 pointer-events-none" />
+          <div className="absolute -bottom-4 -right-4 h-24 w-24 bg-accent/10 border border-border rounded-sharp -z-10 transition-transform group-hover:translate-x-2 group-hover:translate-y-2 group-active:translate-x-2 group-active:translate-y-2 pointer-events-none" />
         </motion.div>
       </div>
     </section>

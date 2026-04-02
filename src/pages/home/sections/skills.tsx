@@ -1,8 +1,11 @@
 import { TECH_DATA, SKILL_GROUPS } from "../../../shared/constants/tech-data";
 
-export const Capabilities = () => {
+export const Skills = () => {
   return (
-    <section className="py-20 px-10 border-t border-border bg-black">
+    <section
+      id="skills"
+      className="py-32 px-8 md:px-10 border-t border-border bg-black"
+    >
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20">
         <div className="lg:max-w-xs max-w-full">
           <h2 className="font-display text-[24px] text-[rgb(107,114,128)] font-bold uppercase mb-6 tracking-[12px]! lg:tracking-[14px]! leading-loose">
@@ -27,16 +30,21 @@ export const Capabilities = () => {
                     <li
                       key={s}
                       className="group flex items-center gap-3 text-sm font-medium transition-all duration-300 cursor-default"
-                      style={{ "--hover-color": data?.color || "#fff" } as any}
                     >
-                      <span className="text-muted group-hover:text-(--hover-color) transition-colors duration-300">
+                      <span
+                        className="transition-all duration-500 ease-out flex items-center justify-center"
+                        style={{
+                          color: data?.color || "#fff",
+                          filter: `drop-shadow(0 0 6px ${data?.color || "#fff"}66)`,
+                        }}
+                      >
                         {Icon ? (
-                          <Icon size={16} />
+                          <Icon size={22} />
                         ) : (
-                          <div className="w-4 h-4 bg-zinc-800 rounded-full" />
+                          <div className="w-5 h-5 bg-zinc-800 rounded-full" />
                         )}
                       </span>
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      <span className="text-muted group-hover:translate-x-1 group-hover:text-secondary transition-all duration-300">
                         {s}
                       </span>
                     </li>

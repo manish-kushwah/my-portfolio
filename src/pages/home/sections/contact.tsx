@@ -51,7 +51,7 @@ export const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-40 px-10 border-t border-border bg-zinc-950"
+      className="py-32 px-8 md:px-10 border-t border-border bg-zinc-950"
     >
       <motion.div
         initial={{ opacity: 0, y: 40 }}

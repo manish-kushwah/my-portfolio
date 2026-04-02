@@ -79,6 +79,13 @@ export const Navbar = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full" />
             </a>
             <a
+              href="#skills"
+              className={`transition-all duration-300 ${isScrolled ? "text-muted hover:text-accent" : "text-muted hover:text-secondary"} relative group`}
+            >
+              Skills
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full" />
+            </a>
+            <a
               href="#about"
               className={`transition-all duration-300 ${isScrolled ? "text-muted hover:text-accent" : "text-muted hover:text-secondary"} relative group`}
             >

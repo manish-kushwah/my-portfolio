@@ -2,7 +2,7 @@ import { Hero } from "./sections/hero";
 import { Systems } from "./sections/systems";
 import { Projects } from "./sections/projects";
 import { About } from "./sections/about";
-import { Capabilities } from "./sections/capabilities";
+import { Skills } from "./sections/skills";
 import { Contact } from "./sections/contact";
 
 export default function HomePage() {
@@ -12,7 +12,7 @@ export default function HomePage() {
       <Systems />
       <Projects />
       <About />
-      <Capabilities />
+      <Skills />
       <Contact />
     </>
   );

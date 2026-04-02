@@ -17,7 +17,7 @@ const PRINCIPLES = [
 
 export const Systems = () => {
   return (
-    <section className="py-20 px-10 border-t border-border bg-zinc-950">
+    <section className="py-32 px-8 md:px-10 border-t border-border bg-zinc-950">
       <div className="max-w-6xl mx-auto">
         <h2 className="font-display text-[24px] text-[rgb(107,114,128)] font-bold uppercase mb-12 tracking-[12px]! lg:tracking-[14px]! leading-loose">
           Principles

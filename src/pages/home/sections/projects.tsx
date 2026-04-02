@@ -10,9 +10,9 @@ const PROJECTS = [
     solution:
       "Led architecture for an AI-powered documentation engine using AWS HealthScribe and RSpack for ultra-fast builds.",
     metrics: [
-      { label: "Onboarding Lift", value: "30%" },
-      { label: "Build Perf.", value: "RSpack" },
-      { label: "Efficiency", value: "+40%" },
+      { label: "Build Speed", value: "10x" },
+      { label: "Bundle Size", value: "- 70%" },
+      { label: "Efficiency", value: "+ 40%" },
     ],
     stack: [
       "React",
@@ -34,8 +34,8 @@ const PROJECTS = [
     solution:
       "Built a complex multi-user pledger dashboard and signup module with specialized first-time user experience (FTUE).",
     metrics: [
-      { label: "Onboarding Speed", value: "+50%" },
-      { label: "Latency", value: "-2s" },
+      { label: "Onboarding Speed", value: "+ 50%" },
+      { label: "Core Web Vitals", value: "+ 20%" },
       { label: "SEO Score", value: "100" },
     ],
     stack: [
@@ -51,7 +51,7 @@ const PROJECTS = [
 
 export const Projects = () => {
   return (
-    <section id="work" className="py-20 px-10 border-t border-border">
+    <section id="work" className="py-32 px-8 md:px-10 border-t border-border">
       <div className="max-w-6xl mx-auto">
         <h2 className="font-display text-[24px] text-[rgb(107,114,128)] font-bold uppercase mb-12 tracking-[12px]! lg:tracking-[14px]! leading-loose">
           Projects
@@ -118,14 +118,14 @@ export const Projects = () => {
                       <span
                         key={s}
                         className="group px-3 py-1.5 border border-zinc-800 rounded-sharp mono text-[10px] text-muted flex items-center gap-2 transition-all duration-300 cursor-default hover:bg-zinc-900"
-                        style={
-                          { "--hover-color": data?.color || "#fff" } as any
-                        }
                       >
-                        <span className="group-hover:text-(--hover-color) transition-colors duration-300">
-                          {Icon && <Icon size={14} />}
+                        <span
+                          className="transition-colors duration-300"
+                          style={{ color: data?.color || "#fff" }}
+                        >
+                          {Icon && <Icon size={17} />}
                         </span>
-                        <span className="group-hover:text-secondary transition-colors duration-300">
+                        <span className="text-muted group-hover:translate-x-1 group-hover:text-secondary transition-all duration-300">
                           {s}
                         </span>
                       </span>
