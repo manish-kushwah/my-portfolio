@@ -9,7 +9,7 @@ export const MainLayout = ({ children }: { children: ReactNode }) => {
   useSmoothScroll(); // Initialize premium smooth scrolling
 
   return (
-    <main className="min-h-screen bg-primary text-secondary selection:bg-accent selection:text-primary">
+    <main className="min-h-screen md:mx-4 lg:mx-8 bg-primary text-secondary selection:bg-accent selection:text-primary">
       <div className="fixed inset-0 grid-paper opacity-[0.03] pointer-events-none" />
       <Navbar />
       {children}

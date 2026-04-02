@@ -15,7 +15,7 @@ export const Contact = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    reset
+    reset,
   } = useForm<ContactForm>();
 
   const onSubmit = async (data: ContactForm) => {
@@ -49,19 +49,31 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-40 px-10 border-t border-border bg-zinc-950">
+    <section
+      id="contact"
+      className="py-40 px-10 border-t border-border bg-zinc-950"
+    >
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-20"
+        className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-20"
       >
-        <div className="max-w-md">
-          <h2 className="mono text-[10px] text-muted uppercase mb-12 tracking-widest">Get in Touch</h2>
-          <h3 className="text-6xl font-black font-display tracking-tighter uppercase mb-6 leading-none">Let's build<br />the next<br />big thing.</h3>
+        <div className="lg:max-w-md max-w-full">
+          <h2 className="font-display text-[24px] text-[rgb(107,114,128)] font-bold uppercase mb-12 tracking-[12px]! lg:tracking-[14px]! leading-loose">
+            Connect
+          </h2>
+          <h3 className="text-6xl font-black font-display tracking-tighter uppercase mb-6 leading-none">
+            Let's build
+            <br />
+            the next
+            <br className="hidden lg:block" /> big thing.
+          </h3>
           <p className="text-muted leading-relaxed mb-10">
-            Open for Lead Frontend Roles, Architectural Consulting, and open-source collaborations. Currently focusing on the 2026-level web standard.
+            Open for Lead Frontend Roles, Architectural Consulting, and
+            open-source collaborations. Currently focusing on the 2026-level web
+            standard.
           </p>
           <div className="flex flex-col gap-6">
             <div className="group flex items-center justify-start cursor-pointer">
@@ -81,48 +93,78 @@ export const Contact = () => {
           <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="space-y-2">
-                <label className="mono text-[9px] text-muted uppercase block">Your Name</label>
+                <label className="mono text-[9px] text-muted uppercase block">
+                  Your Name
+                </label>
                 <input
                   type="text"
                   {...register("name", { required: "Name is required" })}
-                  className={`w-full bg-transparent border-b ${errors.name ? 'border-red-500' : 'border-border'} py-2 focus:border-accent outline-none font-medium placeholder:text-zinc-800`}
+                  className={`w-full bg-transparent border-b ${errors.name ? "border-red-500" : "border-border"} py-2 focus:border-accent outline-none font-medium placeholder:text-zinc-800`}
                   placeholder="John Doe"
                 />
-                {errors.name && <span className="mono text-[8px] text-red-500 uppercase">{errors.name.message}</span>}
+                {errors.name && (
+                  <span className="mono text-[8px] text-red-500 uppercase">
+                    {errors.name.message}
+                  </span>
+                )}
               </div>
               <div className="space-y-2">
-                <label className="mono text-[9px] text-muted uppercase block">Email Address</label>
+                <label className="mono text-[9px] text-muted uppercase block">
+                  Email Address
+                </label>
                 <input
                   type="email"
                   {...register("email", {
                     required: "Email is required",
-                    pattern: { value: /^\S+@\S+$/i, message: "Invalid email address" }
+                    pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: "Invalid email address",
+                    },
                   })}
-                  className={`w-full bg-transparent border-b ${errors.email ? 'border-red-500' : 'border-border'} py-2 focus:border-accent outline-none font-medium placeholder:text-zinc-800`}
+                  className={`w-full bg-transparent border-b ${errors.email ? "border-red-500" : "border-border"} py-2 focus:border-accent outline-none font-medium placeholder:text-zinc-800`}
                   placeholder="john@example.com"
                 />
-                {errors.email && <span className="mono text-[8px] text-red-500 uppercase">{errors.email.message}</span>}
+                {errors.email && (
+                  <span className="mono text-[8px] text-red-500 uppercase">
+                    {errors.email.message}
+                  </span>
+                )}
               </div>
             </div>
             <div className="space-y-2">
-              <label className="mono text-[9px] text-muted uppercase block">Subject</label>
+              <label className="mono text-[9px] text-muted uppercase block">
+                Subject
+              </label>
               <input
                 type="text"
                 {...register("subject", { required: "Subject is required" })}
-                className={`w-full bg-transparent border-b ${errors.subject ? 'border-red-500' : 'border-border'} py-2 focus:border-accent outline-none font-medium placeholder:text-zinc-800`}
+                className={`w-full bg-transparent border-b ${errors.subject ? "border-red-500" : "border-border"} py-2 focus:border-accent outline-none font-medium placeholder:text-zinc-800`}
                 placeholder="Architectural Consultation"
               />
-              {errors.subject && <span className="mono text-[8px] text-red-500 uppercase">{errors.subject.message}</span>}
+              {errors.subject && (
+                <span className="mono text-[8px] text-red-500 uppercase">
+                  {errors.subject.message}
+                </span>
+              )}
             </div>
             <div className="space-y-2">
-              <label className="mono text-[9px] text-muted uppercase block">Message</label>
+              <label className="mono text-[9px] text-muted uppercase block">
+                Message
+              </label>
               <textarea
                 rows={4}
-                {...register("message", { required: "Message is required", minLength: { value: 10, message: "Min 10 characters" } })}
-                className={`w-full bg-transparent border-b ${errors.message ? 'border-red-500' : 'border-border'} py-2 resize-none focus:border-accent outline-none font-medium placeholder:text-zinc-800`}
+                {...register("message", {
+                  required: "Message is required",
+                  minLength: { value: 10, message: "Min 10 characters" },
+                })}
+                className={`w-full bg-transparent border-b ${errors.message ? "border-red-500" : "border-border"} py-2 resize-none focus:border-accent outline-none font-medium placeholder:text-zinc-800`}
                 placeholder="How can I help you scale?"
               />
-              {errors.message && <span className="mono text-[8px] text-red-500 uppercase">{errors.message.message}</span>}
+              {errors.message && (
+                <span className="mono text-[8px] text-red-500 uppercase">
+                  {errors.message.message}
+                </span>
+              )}
             </div>
             <button
               disabled={isSubmitting}

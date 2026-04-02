@@ -1,17 +1,18 @@
 import { motion } from "framer-motion";
+import profileImg from "../../../assets/images/profile-portrait.jpeg";
 
 export const About = () => {
   return (
     <section id="about" className="py-20 px-10 border-t border-border">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true, margin: "-10%" }}
         >
-          <h2 className="mono text-[10px] text-muted uppercase mb-12 tracking-widest">
-            About Me
+          <h2 className="font-display text-[24px] text-[rgb(107,114,128)] font-bold uppercase mb-12 tracking-[12px]! lg:tracking-[14px]! leading-loose">
+            About
           </h2>
           <h3 className="text-4xl font-display font-black uppercase mb-8 leading-tight">
             Engineering
@@ -44,9 +45,9 @@ export const About = () => {
               <span className="font-bold text-secondary">
                 Storybook themer logic
               </span>
-              . I've successfully reduced bundle sizes by 80% and build times
-              by 10x, proving that performance is as much an architectural
-              decision as it is a feature.
+              . I've successfully reduced bundle sizes by 80% and build times by
+              10x, proving that performance is as much an architectural decision
+              as it is a feature.
             </p>
           </div>
         </motion.div>
@@ -58,7 +59,7 @@ export const About = () => {
           viewport={{ once: true, margin: "-10%" }}
           className="relative group"
         >
-          <div className="aspect-4/5 bg-zinc-900 border border-border rounded-sharp overflow-hidden relative shadow-2xl">
+          <div className="aspect-8/9 bg-zinc-900 border border-border rounded-sharp overflow-hidden relative shadow-2xl">
             <div className="absolute inset-0 bg-linear-to-t from-black to-transparent opacity-40 select-none pointer-events-none" />
             <div className="absolute bottom-8 left-8 right-8 z-10">
               <span className="mono text-[10px] text-accent uppercase block mb-2 tracking-tighter">
@@ -69,11 +70,11 @@ export const About = () => {
               </p>
             </div>
             {/* User can add their own image here */}
-            <div className="w-full h-full bg-zinc-800 flex items-center justify-center">
-              <span className="mono text-muted text-[10px] italic">
-                IMAGE_PLACEHOLDER
-              </span>
-            </div>
+            <img
+              src={profileImg}
+              alt="Manish Kushwah Portrait"
+              className="w-full h-full object-cover object-[center_18%] grayscale hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 group-hover:scale-100"
+            />
           </div>
           <div className="absolute -bottom-4 -right-4 h-24 w-24 bg-accent/10 border border-border rounded-sharp -z-10 transition-transform group-hover:translate-x-2 group-hover:translate-y-2 pointer-events-none" />
         </motion.div>

@@ -18,21 +18,36 @@ export const Hero = () => {
           <div className="inline-block px-3 py-1 mb-6 border border-accent/20 bg-accent/10 rounded-sharp mono text-[10px] text-accent tracking-widest font-bold uppercase">
             Senior Frontend Engineer @ Waveaxis
           </div>
-          <h1 className="text-[clamp(3.5rem,12vw,9rem)] leading-[0.85] tracking-tighter uppercase font-black -ml-2 mb-10 text-center text-secondary drop-shadow-sm">
-            Frontend<br />Engineer.
+          <h1 className="text-[clamp(3.5rem,12vw,9rem)] leading-[0.85] tracking-tighter uppercase font-black -ml-2 mb-10 text-secondary drop-shadow-sm">
+            Frontend
+            <br />
+            Engineer.
           </h1>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-10">
-            <p className="max-w-md text-lg text-muted/80 leading-relaxed font-medium">
-              6+ years of building <span className="text-secondary">high-performance UI systems</span>. Expert in component-driven architecture, bundler optimization (Webpack/RSpack), and scalable frontend platforms.
+          <div className="flex flex-col md:flex-row justify-between items-start gap-10">
+            <p className="lg:max-w-md max-w-fuull text-lg text-muted/80 leading-relaxed font-medium">
+              6+ years of building{" "}
+              <span className="text-secondary">
+                high-performance UI systems
+              </span>
+              . Expert in component-driven architecture, bundler optimization
+              (Webpack/RSpack), and scalable frontend platforms.
             </p>
             <div className="flex gap-4">
-              <div className="h-24 w-44 bg-zinc-900/50 backdrop-blur-sm border border-border/50 rounded-sharp flex flex-col justify-center px-6 group hover:border-accent/40 transition-colors">
-                <span className="mono text-[10px] text-muted mb-1 uppercase tracking-tight">Lighthouse score</span>
-                <span className="text-3xl font-bold font-display text-secondary group-hover:text-accent transition-colors">100<span className="text-muted text-lg">/100</span></span>
+              <div className="h-24 w-44 bg-zinc-900/50 backdrop-blur-sm border border-border/50 rounded-sharp flex flex-col justify-start px-6 group hover:border-accent/40 transition-colors">
+                <span className="mono text-[10px] text-muted mb-1 uppercase tracking-tight">
+                  Lighthouse score
+                </span>
+                <span className="text-3xl font-bold font-display text-secondary group-hover:text-accent transition-colors">
+                  100<span className="text-muted text-lg">/100</span>
+                </span>
               </div>
-              <div className="h-24 w-44 bg-zinc-900/50 backdrop-blur-sm border border-border/50 rounded-sharp flex flex-col justify-center px-6 group hover:border-accent/40 transition-colors">
-                <span className="mono text-[10px] text-muted mb-1 uppercase tracking-tight">Years Exp.</span>
-                <span className="text-3xl font-bold font-display text-secondary group-hover:text-accent transition-colors">06+ <span className="text-muted text-lg">YRS</span></span>
+              <div className="h-24 w-44 bg-zinc-900/50 backdrop-blur-sm border border-border/50 rounded-sharp flex flex-col justify-start px-6 group hover:border-accent/40 transition-colors">
+                <span className="mono text-[10px] text-muted mb-1 uppercase tracking-tight">
+                  Years Exp.
+                </span>
+                <span className="text-3xl font-bold font-display text-secondary group-hover:text-accent transition-colors">
+                  06+ <span className="text-muted text-lg">YRS</span>
+                </span>
               </div>
             </div>
           </div>
