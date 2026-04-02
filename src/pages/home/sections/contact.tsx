@@ -51,8 +51,11 @@ export const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-32 px-8 md:px-10 border-t border-border bg-zinc-950"
+      className="relative py-32 px-8 md:px-10 border-t border-border bg-zinc-950 overflow-hidden"
     >
+      {/* Subtle Background Glow for Form focus area */}
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1/2 h-1/2 bg-accent/2 blur-[120px] rounded-full pointer-events-none -z-10 animate-pulse" />
+
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

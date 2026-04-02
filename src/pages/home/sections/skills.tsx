@@ -4,8 +4,11 @@ export const Skills = () => {
   return (
     <section
       id="skills"
-      className="py-32 px-8 md:px-10 border-t border-border bg-black"
+      className="relative py-32 px-8 md:px-10 border-t border-border bg-black overflow-hidden"
     >
+      {/* Background Accent Pulse */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-accent/5 blur-[150px] rounded-full pointer-events-none animate-pulse" />
+
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20">
         <div className="lg:max-w-xs max-w-full">
           <h2 className="font-display text-[24px] text-[rgb(107,114,128)] font-bold uppercase mb-6 tracking-[12px]! lg:tracking-[14px]! leading-loose">
