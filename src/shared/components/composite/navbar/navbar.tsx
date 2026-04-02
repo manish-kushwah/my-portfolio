@@ -1,11 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { SocialIcon } from "react-social-icons";
 import { motion, AnimatePresence } from "framer-motion";
+import { ThemeToggle } from "../../ui/theme-toggle";
+import { useThemeContext } from "../../../../app/providers/theme-provider";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
+  const { theme } = useThemeContext();
+  const isDark = theme === "dark";
 
   const navLinks = [
     { name: "Work", href: "#work" },
@@ -29,6 +33,9 @@ export const Navbar = () => {
     return () => observer.disconnect();
   }, []);
 
+  const iconFgColor = isDark ? "#737373" : "#52525b";
+  const menuIconFgColor = isDark ? "#fff" : "#09090b";
+
   return (
     <>
       <div
@@ -39,7 +46,7 @@ export const Navbar = () => {
       <nav
         className={`fixed top-0 left-0 right-0 z-100 border-b transition-all duration-500 ease-out ${
           isScrolled || isMenuOpen
-            ? "bg-zinc-950/20 backdrop-blur-md border-white/5"
+            ? "bg-(--bg)/80 backdrop-blur-md border-(--border)/30"
             : "bg-transparent border-transparent"
         }`}
       >
@@ -62,7 +69,7 @@ export const Navbar = () => {
                 url={`https://x.com/${import.meta.env.VITE_CONTACT_X_USER}`}
                 target="_blank"
                 bgColor="transparent"
-                fgColor="#737373"
+                fgColor={iconFgColor}
                 style={{ width: 28, height: 28 }}
                 className="hover:opacity-100 opacity-60 transition-opacity"
               />
@@ -70,7 +77,7 @@ export const Navbar = () => {
                 url={`https://github.com/${import.meta.env.VITE_CONTACT_GITHUB_USER}`}
                 target="_blank"
                 bgColor="transparent"
-                fgColor="#737373"
+                fgColor={iconFgColor}
                 style={{ width: 28, height: 28 }}
                 className="hover:opacity-100 opacity-60 transition-opacity"
               />
@@ -78,7 +85,7 @@ export const Navbar = () => {
                 url={`https://www.linkedin.com/in/${import.meta.env.VITE_CONTACT_LINKEDIN_ID}`}
                 target="_blank"
                 bgColor="transparent"
-                fgColor="#737373"
+                fgColor={iconFgColor}
                 style={{ width: 28, height: 28 }}
                 className="hover:opacity-100 opacity-60 transition-opacity"
               />
@@ -86,34 +93,38 @@ export const Navbar = () => {
           </div>
 
           {/* Desktop Nav (Tablet & Above) */}
-          <div className="hidden sm:flex gap-6 md:gap-8 mono text-[10px] uppercase font-bold tracking-widest">
+          <div className="hidden sm:flex gap-4 md:gap-6 items-center mono text-[10px] uppercase font-bold tracking-widest">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`transition-all duration-300 ${isScrolled ? "text-muted hover:text-accent" : "text-muted hover:text-secondary"} relative group`}
+                className="transition-all duration-300 text-(--muted) hover:text-(--accent) relative group"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-(--accent) transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
+            <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Toggle (Mobile Only) */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="sm:hidden w-8 h-8 flex flex-col justify-center items-center gap-1.5 focus:outline-none z-110"
-          >
-            <span
-              className={`w-6 h-[1.5px] bg-secondary transition-all duration-300 ${isMenuOpen ? "rotate-45 translate-y-[6px]" : ""}`}
-            />
-            <span
-              className={`w-6 h-[1.5px] bg-secondary transition-all duration-300 ${isMenuOpen ? "opacity-0" : "opacity-100"}`}
-            />
-            <span
-              className={`w-6 h-[1.5px] bg-secondary transition-all duration-300 ${isMenuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`}
-            />
-          </button>
+          {/* Mobile: Theme toggle + Hamburger */}
+          <div className="sm:hidden flex items-center gap-3">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="w-8 h-8 flex flex-col justify-center items-center gap-1.5 focus:outline-none z-110"
+            >
+              <span
+                className={`w-6 h-[1.5px] bg-(--fg) transition-all duration-300 ${isMenuOpen ? "rotate-45 translate-y-[6px]" : ""}`}
+              />
+              <span
+                className={`w-6 h-[1.5px] bg-(--fg) transition-all duration-300 ${isMenuOpen ? "opacity-0" : "opacity-100"}`}
+              />
+              <span
+                className={`w-6 h-[1.5px] bg-(--fg) transition-all duration-300 ${isMenuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`}
+              />
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Overlay */}
@@ -124,7 +135,7 @@ export const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3, ease: "circOut" }}
-              className="absolute top-0 left-0 w-full min-h-screen bg-zinc-950/95 backdrop-blur-xl flex flex-col items-center justify-center gap-12 z-[-1] sm:hidden"
+              className="absolute top-0 left-0 w-full min-h-screen bg-(--bg)/95 backdrop-blur-xl flex flex-col items-center justify-center gap-12 z-[-1] sm:hidden"
             >
               <div className="flex flex-col items-center gap-8 px-10">
                 {navLinks.map((link, i) => (
@@ -135,7 +146,7 @@ export const Navbar = () => {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-4xl font-black uppercase tracking-tighter hover:text-accent transition-colors"
+                    className="text-4xl font-black uppercase tracking-tighter text-(--fg) hover:text-(--accent) transition-colors"
                   >
                     {link.name}
                   </motion.a>
@@ -150,19 +161,19 @@ export const Navbar = () => {
                 <SocialIcon
                   url={`https://x.com/${import.meta.env.VITE_CONTACT_X_USER}`}
                   bgColor="transparent"
-                  fgColor="#fff"
+                  fgColor={menuIconFgColor}
                   style={{ width: 40, height: 40 }}
                 />
                 <SocialIcon
                   url={`https://github.com/${import.meta.env.VITE_CONTACT_GITHUB_USER}`}
                   bgColor="transparent"
-                  fgColor="#fff"
+                  fgColor={menuIconFgColor}
                   style={{ width: 40, height: 40 }}
                 />
                 <SocialIcon
                   url={`https://www.linkedin.com/in/${import.meta.env.VITE_CONTACT_LINKEDIN_ID}`}
                   bgColor="transparent"
-                  fgColor="#fff"
+                  fgColor={menuIconFgColor}
                   style={{ width: 40, height: 40 }}
                 />
               </motion.div>

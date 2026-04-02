@@ -6,14 +6,14 @@ export const Hero = () => {
     <section className="relative pt-48 pb-32 px-8 md:px-10 overflow-hidden">
       <GeometricBird />
       {/* Background Subtle Spotlight */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-accent/5 blur-[120px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-(--accent)/5 blur-[120px] rounded-full pointer-events-none -z-10" />
 
       {/* Floating Industrial Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-px h-12 bg-accent/10"
+            className="absolute w-px h-12 bg-(--accent)/10"
             initial={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
@@ -41,13 +41,13 @@ export const Hero = () => {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          <div className="inline-block px-3 py-1 mb-6 border border-accent/20 bg-accent/10 rounded-sharp mono text-[10px] text-accent tracking-widest font-bold uppercase">
+          <div className="inline-block px-3 py-1 mb-6 border border-(--accent)/20 bg-(--accent)/10 rounded-sharp mono text-[10px] text-(--accent) tracking-widest font-bold uppercase">
             Senior Frontend Engineer @ Waveaxis
           </div>
 
           <div className="relative group mb-10">
             {/* Base Heading */}
-            <h1 className="text-[clamp(3.5rem,12vw,9rem)] leading-[0.85] tracking-tighter uppercase font-black -ml-2 text-secondary drop-shadow-sm">
+            <h1 className="text-[clamp(3.5rem,12vw,9rem)] leading-[0.85] tracking-tighter uppercase font-black -ml-2 text-(--fg) drop-shadow-sm">
               Frontend
               <br />
               Engineer.
@@ -80,28 +80,28 @@ export const Hero = () => {
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-start gap-10">
-            <p className="lg:max-w-md max-w-fuull text-lg text-muted/80 leading-relaxed font-medium">
+            <p className="lg:max-w-md max-w-full text-lg text-(--muted)/80 leading-relaxed font-medium">
               6+ years of building{" "}
-              <span className="text-secondary">
+              <span className="text-(--fg)">
                 high-performance UI systems
               </span>
               . Expert in component-driven architecture, bundler optimization
               (Webpack/RSpack), and scalable frontend platforms.
             </p>
             <div className="flex gap-4">
-              <div className="h-24 w-44 bg-zinc-900/50 backdrop-blur-sm border border-border/50 rounded-sharp flex flex-col justify-start px-6 group hover:border-accent/40 transition-colors">
-                <span className="mono text-[10px] text-muted mb-1 uppercase tracking-tight">
+              <div className="h-24 w-44 bg-(--surface-3)/50 backdrop-blur-sm border border-(--border)/50 rounded-sharp flex flex-col justify-start px-6 group hover:border-(--accent)/40 transition-colors">
+                <span className="mono text-[10px] text-(--muted) mb-1 uppercase tracking-tight">
                   UX Consistency
                 </span>
-                <span className="text-3xl font-bold font-display text-secondary group-hover:text-accent transition-colors">
+                <span className="text-3xl font-bold font-display text-(--fg) group-hover:text-(--accent) transition-colors">
                   Atomic Design
                 </span>
               </div>
-              <div className="h-24 w-44 bg-zinc-900/50 backdrop-blur-sm border border-border/50 rounded-sharp flex flex-col justify-start px-6 group hover:border-accent/40 transition-colors">
-                <span className="mono text-[10px] text-muted mb-1 uppercase tracking-tight">
+              <div className="h-24 w-44 bg-(--surface-3)/50 backdrop-blur-sm border border-(--border)/50 rounded-sharp flex flex-col justify-start px-6 group hover:border-(--accent)/40 transition-colors">
+                <span className="mono text-[10px] text-(--muted) mb-1 uppercase tracking-tight">
                   Years Exp.
                 </span>
-                <span className="text-3xl font-bold font-display text-secondary group-hover:text-accent transition-colors">
+                <span className="text-3xl font-bold font-display text-(--fg) group-hover:text-(--accent) transition-colors">
                   6+
                 </span>
               </div>

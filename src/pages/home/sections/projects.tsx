@@ -51,9 +51,9 @@ const PROJECTS = [
 
 export const Projects = () => {
   return (
-    <section id="work" className="py-32 px-8 md:px-10 border-t border-border">
+    <section id="work" className="py-32 px-8 md:px-10 border-t border-(--border)">
       <div className="max-w-6xl mx-auto">
-        <h2 className="font-display text-[24px] text-[rgb(107,114,128)] font-bold uppercase mb-12 tracking-[12px]! lg:tracking-[14px]! leading-loose">
+        <h2 className="font-display text-[24px] text-(--muted) font-bold uppercase mb-12 tracking-[12px]! lg:tracking-[14px]! leading-loose">
           Projects
         </h2>
         <div className="space-y-32">
@@ -67,29 +67,29 @@ export const Projects = () => {
               className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start"
             >
               <div className="lg:col-span-5">
-                <span className="mono text-[10px] text-accent font-bold mb-4 block uppercase tracking-tighter decoration-accent underline underline-offset-4">
+                <span className="mono text-[10px] text-(--accent) font-bold mb-4 block uppercase tracking-tighter decoration-accent underline underline-offset-4">
                   Project {i + 1}
                 </span>
-                <h3 className="text-4xl font-display font-black uppercase mb-2 sm:mb-6 leading-none italic">
+                <h3 className="text-4xl font-display font-black uppercase mb-2 sm:mb-6 leading-none italic text-(--fg)">
                   {system.title}
                 </h3>
-                <div className="inline-block px-3 py-1 bg-zinc-900 border border-border rounded-sharp mono text-[9px] mb-8">
+                <div className="inline-block px-3 py-1 bg-(--surface-3) border border-(--border) rounded-sharp mono text-[9px] mb-8 text-(--muted)">
                   ROLE: {system.role}
                 </div>
                 <div className="space-y-6">
                   <div>
-                    <h4 className="mono text-[9px] text-muted uppercase mb-2">
+                    <h4 className="mono text-[9px] text-(--muted) uppercase mb-2">
                       Problem
                     </h4>
-                    <p className="text-sm text-zinc-300 leading-relaxed lg:max-w-sm max-w-full">
+                    <p className="text-sm text-(--fg)/70 leading-relaxed lg:max-w-sm max-w-full">
                       {system.problem}
                     </p>
                   </div>
                   <div>
-                    <h4 className="mono text-[9px] text-muted uppercase mb-2">
+                    <h4 className="mono text-[9px] text-(--muted) uppercase mb-2">
                       Solution
                     </h4>
-                    <p className="text-sm text-zinc-300 leading-relaxed lg:max-w-sm max-w-full">
+                    <p className="text-sm text-(--fg)/70 leading-relaxed lg:max-w-sm max-w-full">
                       {system.solution}
                     </p>
                   </div>
@@ -100,32 +100,32 @@ export const Projects = () => {
                 {system.metrics.map((m, j) => (
                   <div
                     key={j}
-                    className="border border-border p-6 rounded-sharp bg-zinc-950 flex flex-col justify-end min-h-[160px] group hover:bg-zinc-900 transition-colors"
+                    className="border border-(--border) p-6 rounded-sharp bg-(--surface-4) flex flex-col justify-end min-h-[160px] group hover:bg-(--surface-3) transition-colors"
                   >
-                    <span className="text-3xl font-display font-bold mb-2 group-hover:text-accent transition-colors tracking-tighter">
+                    <span className="text-3xl font-display font-bold mb-2 group-hover:text-(--accent) transition-colors tracking-tighter text-(--fg)">
                       {m.value}
                     </span>
-                    <span className="mono text-[10px] text-muted uppercase">
+                    <span className="mono text-[10px] text-(--muted) uppercase">
                       {m.label}
                     </span>
                   </div>
                 ))}
-                <div className="sm:col-span-3 border border-border p-4 rounded-sharp bg-black flex flex-wrap gap-2">
+                <div className="sm:col-span-3 border border-(--border) p-4 rounded-sharp bg-(--surface-1) flex flex-wrap gap-2">
                   {system.stack.map((s) => {
                     const data = TECH_DATA[s];
                     const Icon = data?.icon;
                     return (
                       <span
                         key={s}
-                        className="group px-3 py-1.5 border border-zinc-800 rounded-sharp mono text-[10px] text-muted flex items-center gap-2 transition-all duration-300 cursor-default hover:bg-zinc-900"
+                        className="group px-3 py-1.5 border border-(--border) rounded-sharp mono text-[10px] text-(--muted) flex items-center gap-2 transition-all duration-300 cursor-default hover:bg-(--surface-3)"
                       >
                         <span
                           className="transition-colors duration-300"
-                          style={{ color: data?.color || "#fff" }}
+                          style={{ color: data?.color || "var(--fg)" }}
                         >
                           {Icon && <Icon size={17} />}
                         </span>
-                        <span className="text-muted group-hover:translate-x-1 group-hover:text-secondary transition-all duration-300">
+                        <span className="text-(--muted) group-hover:translate-x-1 group-hover:text-(--fg) transition-all duration-300">
                           {s}
                         </span>
                       </span>

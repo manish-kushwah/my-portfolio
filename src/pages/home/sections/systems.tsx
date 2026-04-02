@@ -17,20 +17,20 @@ const PRINCIPLES = [
 
 export const Systems = () => {
   return (
-    <section className="relative py-32 px-8 md:px-10 border-t border-border bg-zinc-950 overflow-hidden">
+    <section className="relative py-32 px-8 md:px-10 border-t border-(--border) bg-(--surface-4) overflow-hidden">
       {/* Moving Scanline */}
       <motion.div
-        className="absolute left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/20 to-transparent z-0"
+        className="absolute left-0 right-0 h-px bg-linear-to-r from-transparent via-(--accent)/20 to-transparent z-0"
         animate={{ top: ["-10%", "110%"] }}
-        transition={{ 
-          duration: 25, 
-          repeat: Infinity, 
+        transition={{
+          duration: 25,
+          repeat: Infinity,
           ease: "linear",
         }}
       />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <h2 className="font-display text-[24px] text-[rgb(107,114,128)] font-bold uppercase mb-12 tracking-[12px]! lg:tracking-[14px]! leading-loose">
+        <h2 className="font-display text-[24px] text-(--muted) font-bold uppercase mb-12 tracking-[12px]! lg:tracking-[14px]! leading-loose">
           Principles
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -45,12 +45,12 @@ export const Systems = () => {
                 ease: [0.16, 1, 0.3, 1],
               }}
               viewport={{ once: true, margin: "-10%" }}
-              className="p-8 border border-border rounded-sharp hover:border-accent/40 transition-all duration-300 bg-black/40 group hover:bg-zinc-900/10 backdrop-blur-sm"
+              className="p-8 border border-(--border) rounded-sharp hover:border-(--accent)/40 transition-all duration-300 bg-(--surface-2)/40 group hover:bg-(--surface-3)/10 backdrop-blur-sm"
             >
-              <h3 className="text-xl mb-4 font-display uppercase tracking-tight text-secondary group-hover:text-accent transition-colors">
+              <h3 className="text-xl mb-4 font-display uppercase tracking-tight text-(--fg) group-hover:text-(--accent) transition-colors">
                 {item.title}
               </h3>
-              <p className="text-muted/80 text-sm leading-relaxed font-normal">
+              <p className="text-(--muted)/80 text-sm leading-relaxed font-normal">
                 {item.desc}
               </p>
             </motion.div>
@@ -60,4 +60,3 @@ export const Systems = () => {
     </section>
   );
 };
-

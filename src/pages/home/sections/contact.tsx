@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { SocialIcon } from "react-social-icons";
+import { useThemeContext } from "../../../app/providers/theme-provider";
 
 type ContactForm = {
   name: string;
@@ -17,6 +18,9 @@ export const Contact = () => {
     formState: { errors, isSubmitting },
     reset,
   } = useForm<ContactForm>();
+
+  const { theme } = useThemeContext();
+  const isDark = theme === "dark";
 
   const onSubmit = async (data: ContactForm) => {
     try {
@@ -48,13 +52,15 @@ export const Contact = () => {
     }
   };
 
+  const iconFgColor = isDark ? "#737373" : "#52525b";
+
   return (
     <section
       id="contact"
-      className="relative py-32 px-8 md:px-10 border-t border-border bg-zinc-950 overflow-hidden"
+      className="relative py-32 px-8 md:px-10 border-t border-(--border) bg-(--surface-4) overflow-hidden"
     >
       {/* Subtle Background Glow for Form focus area */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1/2 h-1/2 bg-accent/2 blur-[120px] rounded-full pointer-events-none -z-10 animate-pulse" />
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1/2 h-1/2 bg-(--accent)/2 blur-[120px] rounded-full pointer-events-none -z-10 animate-pulse" />
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -64,27 +70,27 @@ export const Contact = () => {
         className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-20"
       >
         <div className="lg:max-w-md max-w-full">
-          <h2 className="font-display text-[24px] text-[rgb(107,114,128)] font-bold uppercase mb-12 tracking-[12px]! lg:tracking-[14px]! leading-loose">
+          <h2 className="font-display text-[24px] text-(--muted) font-bold uppercase mb-12 tracking-[12px]! lg:tracking-[14px]! leading-loose">
             Connect
           </h2>
-          <h3 className="text-6xl font-black font-display tracking-tighter uppercase mb-6 leading-none">
+          <h3 className="text-6xl font-black font-display tracking-tighter uppercase mb-6 leading-none text-(--fg)">
             Let's build
             <br />
             the next
             <br className="hidden lg:block" /> big thing.
           </h3>
-          <p className="text-muted leading-relaxed mb-10">
+          <p className="text-(--muted) leading-relaxed mb-10">
             Open for Lead Frontend Roles, Architectural Consulting, and
             open-source collaborations. Currently focusing on the 2026-level web
             standard.
           </p>
           <div className="flex flex-col gap-6">
             <div className="group flex items-center justify-start cursor-pointer">
-              <span className="mono text-[9px] text-accent block">Email: </span>
+              <span className="mono text-[9px] text-(--accent) block">Email: </span>
               <SocialIcon
                 url={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}
                 bgColor="transparent"
-                fgColor="#737373"
+                fgColor={iconFgColor}
                 style={{ width: 40, height: 40 }}
                 className="hover:opacity-100 opacity-60 transition-opacity shrink-0 cursor-pointer"
               />
@@ -92,17 +98,17 @@ export const Contact = () => {
           </div>
         </div>
 
-        <div className="flex-1 w-full bg-zinc-900 border border-border p-10 rounded-sharp">
+        <div className="flex-1 w-full bg-(--surface-3) border border-(--border) p-10 rounded-sharp">
           <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="space-y-2">
-                <label className="mono text-[9px] text-muted uppercase block">
+                <label className="mono text-[9px] text-(--muted) uppercase block">
                   Your Name
                 </label>
                 <input
                   type="text"
                   {...register("name", { required: "Name is required" })}
-                  className={`w-full bg-transparent border-b ${errors.name ? "border-red-500" : "border-border"} py-2 focus:border-accent outline-none font-medium placeholder:text-zinc-800`}
+                  className={`w-full bg-transparent border-b ${errors.name ? "border-red-500" : "border-(--border)"} py-2 focus:border-(--accent) outline-none font-medium text-(--fg) placeholder:text-(--muted)/30`}
                   placeholder="John Doe"
                 />
                 {errors.name && (
@@ -112,7 +118,7 @@ export const Contact = () => {
                 )}
               </div>
               <div className="space-y-2">
-                <label className="mono text-[9px] text-muted uppercase block">
+                <label className="mono text-[9px] text-(--muted) uppercase block">
                   Email Address
                 </label>
                 <input
@@ -124,7 +130,7 @@ export const Contact = () => {
                       message: "Invalid email address",
                     },
                   })}
-                  className={`w-full bg-transparent border-b ${errors.email ? "border-red-500" : "border-border"} py-2 focus:border-accent outline-none font-medium placeholder:text-zinc-800`}
+                  className={`w-full bg-transparent border-b ${errors.email ? "border-red-500" : "border-(--border)"} py-2 focus:border-(--accent) outline-none font-medium text-(--fg) placeholder:text-(--muted)/30`}
                   placeholder="john@example.com"
                 />
                 {errors.email && (
@@ -135,13 +141,13 @@ export const Contact = () => {
               </div>
             </div>
             <div className="space-y-2">
-              <label className="mono text-[9px] text-muted uppercase block">
+              <label className="mono text-[9px] text-(--muted) uppercase block">
                 Subject
               </label>
               <input
                 type="text"
                 {...register("subject", { required: "Subject is required" })}
-                className={`w-full bg-transparent border-b ${errors.subject ? "border-red-500" : "border-border"} py-2 focus:border-accent outline-none font-medium placeholder:text-zinc-800`}
+                className={`w-full bg-transparent border-b ${errors.subject ? "border-red-500" : "border-(--border)"} py-2 focus:border-(--accent) outline-none font-medium text-(--fg) placeholder:text-(--muted)/30`}
                 placeholder="Architectural Consultation"
               />
               {errors.subject && (
@@ -151,7 +157,7 @@ export const Contact = () => {
               )}
             </div>
             <div className="space-y-2">
-              <label className="mono text-[9px] text-muted uppercase block">
+              <label className="mono text-[9px] text-(--muted) uppercase block">
                 Message
               </label>
               <textarea
@@ -160,7 +166,7 @@ export const Contact = () => {
                   required: "Message is required",
                   minLength: { value: 10, message: "Min 10 characters" },
                 })}
-                className={`w-full bg-transparent border-b ${errors.message ? "border-red-500" : "border-border"} py-2 resize-none focus:border-accent outline-none font-medium placeholder:text-zinc-800`}
+                className={`w-full bg-transparent border-b ${errors.message ? "border-red-500" : "border-(--border)"} py-2 resize-none focus:border-(--accent) outline-none font-medium text-(--fg) placeholder:text-(--muted)/30`}
                 placeholder="How can I help you scale?"
               />
               {errors.message && (
@@ -171,7 +177,7 @@ export const Contact = () => {
             </div>
             <button
               disabled={isSubmitting}
-              className="bg-accent text-primary px-8 py-4 rounded-sharp mono cursor-pointer text-[11px] font-black uppercase hover:bg-accent-hover active:scale-[0.98] transition-all duration-300 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_20px_rgba(109,112,255,0.2)] hover:shadow-[0_4px_25px_rgba(109,112,255,0.4)]"
+              className="bg-(--accent) text-white px-8 py-4 rounded-sharp mono cursor-pointer text-[11px] font-black uppercase hover:bg-(--accent-hover) active:scale-[0.98] transition-all duration-300 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_20px_rgba(109,112,255,0.2)] hover:shadow-[0_4px_25px_rgba(109,112,255,0.4)]"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>

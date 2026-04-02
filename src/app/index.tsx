@@ -1,10 +1,13 @@
+import { ThemeProvider } from "./providers/theme-provider";
 import { MainLayout } from "./layouts/main-layout";
 import HomePage from "../pages/home";
 
 export const App = () => {
   return (
-    <MainLayout>
-      <HomePage />
-    </MainLayout>
+    <ThemeProvider>
+      <MainLayout>
+        <HomePage />
+      </MainLayout>
+    </ThemeProvider>
   );
 };

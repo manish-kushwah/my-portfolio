@@ -3,13 +3,13 @@
 @theme {
   --color-primary: #0a0a0a;
   --color-secondary: #fafafa;
-  --color-accent: #6d70ff; /* Subtle Indigo */
-  --color-accent-hover: #8e91ff; /* Lighter Indigo for Hover */
+  --color-accent: #6d70ff;
+  --color-accent-hover: #8e91ff;
   --color-accent-soft: rgba(109, 112, 255, 0.1);
   --color-muted: #737373;
   --color-border: #262626;
   --color-zinc-900: #18181b;
-  
+
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   --font-display: "Geist Sans", "Inter Tight", sans-serif;
@@ -18,23 +18,83 @@
   --radius-base: 4px;
 }
 
+/* ─── DARK THEME (default) ─────────────────────────────────────── */
 :root {
+  color-scheme: dark;
+
   --bg: #09090b;
   --fg: #fafafa;
   --border: #262626;
   --muted: #737373;
   --accent: #6d70ff;
-  
+  --accent-hover: #8e91ff;
+  --accent-soft: rgba(109, 112, 255, 0.1);
+
+  /* Surfaces */
+  --surface-1: #09090b;   /* page bg */
+  --surface-2: #111113;   /* cards, panels */
+  --surface-3: #18181b;   /* elevated / zinc-900 */
+  --surface-4: #1c1c1f;   /* zinc-950 */
+
+  /* For sections with explicit dark bg overrides */
+  --section-alt: #000000;
+  --section-dark: #09090b;
+
+  --grid-opacity: 0.03;
+  --scanline-color: rgba(109, 112, 255, 0.2);
+
+  /* Toast */
+  --toast-bg: #0a0a0a;
+  --toast-fg: #ededed;
+  --toast-border: #262626;
+}
+
+/* ─── LIGHT THEME ────────────────────────────────────────────────── */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f5f5f7;
+  --fg: #0a0a0a;
+  --border: #d4d4d8;
+  --muted: #71717a;
+  --accent: #5558e8;
+  --accent-hover: #4446cc;
+  --accent-soft: rgba(85, 88, 232, 0.08);
+
+  --surface-1: #f5f5f7;
+  --surface-2: #ffffff;
+  --surface-3: #f0f0f2;
+  --surface-4: #e8e8ec;
+
+  --section-alt: #eaeaee;
+  --section-dark: #f0f0f4;
+
+  --grid-opacity: 0.06;
+  --scanline-color: rgba(85, 88, 232, 0.15);
+
+  --toast-bg: #ffffff;
+  --toast-fg: #0a0a0a;
+  --toast-border: #d4d4d8;
+}
+
+/* ─── BASE STYLES ────────────────────────────────────────────────── */
+:root {
   background-color: var(--bg);
   color: var(--fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 ::selection {
   background-color: rgba(109, 112, 255, 0.3);
-  color: #fff;
+  color: var(--fg);
+}
+
+[data-theme="light"] ::selection {
+  background-color: rgba(85, 88, 232, 0.2);
+  color: var(--fg);
 }
 
 body {
@@ -43,6 +103,8 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  background-color: var(--bg);
+  color: var(--fg);
 }
 
 /* Typography Scale */
@@ -58,15 +120,33 @@ h1, h2, h3 {
   letter-spacing: -0.01em;
 }
 
-/* Industrial Grid */
+/* ─── INDUSTRIAL GRID ─────────────────────────────────────────────── */
 .grid-paper {
-  background-image: 
+  background-image:
     linear-gradient(var(--border) 1px, transparent 1px),
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 40px 40px;
+  opacity: var(--grid-opacity);
 }
 
-/* Scrollbar */
+/* ─── THEME-AWARE UTILITY CLASSES ─────────────────────────────────── */
+
+/* Backgrounds */
+.bg-theme-base    { background-color: var(--bg); }
+.bg-theme-surface { background-color: var(--surface-2); }
+.bg-theme-raised  { background-color: var(--surface-3); }
+.bg-theme-alt     { background-color: var(--section-alt); }
+.bg-theme-dark    { background-color: var(--section-dark); }
+
+/* Text */
+.text-theme-fg    { color: var(--fg); }
+.text-theme-muted { color: var(--muted); }
+.text-theme-accent { color: var(--accent); }
+
+/* Borders */
+.border-theme     { border-color: var(--border); }
+
+/* ─── SCROLLBAR ────────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -80,7 +160,7 @@ h1, h2, h3 {
   border-radius: 3px;
 }
 
-/* Animations */
+/* ─── ANIMATIONS ───────────────────────────────────────────────────── */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
