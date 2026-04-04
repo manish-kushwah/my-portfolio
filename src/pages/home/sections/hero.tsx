@@ -121,7 +121,7 @@ export const Hero = () => {
               )}
             </div>
             <div className="flex gap-4">
-              <div className="h-24 w-44 bg-(--surface-3)/50 backdrop-blur-sm border border-(--border)/50 rounded-sharp flex flex-col justify-start px-6 group hover:border-(--accent)/40 transition-colors">
+              <div className="min-h-24 h-auto w-44 bg-(--surface-3)/50 backdrop-blur-sm border border-(--border)/50 rounded-sharp flex flex-col justify-start px-6 py-3 group hover:border-(--accent)/40 transition-colors">
                 <span className="mono text-[10px] text-(--muted) mb-1 uppercase tracking-tight">
                   UX Consistency
                 </span>
@@ -129,7 +129,7 @@ export const Hero = () => {
                   Atomic Design
                 </span>
               </div>
-              <div className="h-24 w-44 bg-(--surface-3)/50 backdrop-blur-sm border border-(--border)/50 rounded-sharp flex flex-col justify-start px-6 group hover:border-(--accent)/40 transition-colors">
+              <div className="min-h-24 h-auto w-44 bg-(--surface-3)/50 backdrop-blur-sm border border-(--border)/50 rounded-sharp flex flex-col justify-start px-6 py-3 group hover:border-(--accent)/40 transition-colors">
                 <span className="mono text-[10px] text-(--muted) mb-1 uppercase tracking-tight">
                   Years Exp.
                 </span>

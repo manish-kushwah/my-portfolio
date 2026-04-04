@@ -61,7 +61,7 @@ export const Skills = () => {
             by default and resilient by design.
           </p>
         </div>
-        <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-12">
+        <div className="flex-1 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-12">
           {groupedSkills &&
             Object.entries(groupedSkills).map(([category, skills]) => {
               const sortedSkills = [...skills].sort((a, b) =>
@@ -69,7 +69,7 @@ export const Skills = () => {
               );
               return (
                 <div key={category}>
-                  <h4 className="mono text-[9px] text-(--accent) uppercase mb-6 border-b border-(--border) pb-2">
+                  <h4 className="mono text-[9px] text-(--accent) uppercase mb-6 border-b border-(--border) pb-3 h-12">
                     {category}
                   </h4>
                   <ul className="space-y-3">

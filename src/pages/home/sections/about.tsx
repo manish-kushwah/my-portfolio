@@ -35,6 +35,15 @@ export const About = () => {
             About
           </h2>
           <div className="space-y-6 text-(--muted)/80 leading-relaxed font-medium text-sm md:text-base">
+            <h3 className="text-4xl font-display font-black uppercase mb-8 leading-tight text-(--fg)">
+              Engineering
+              <br />
+              Scalable Web Interfaces
+              <br />
+              with Industrial
+              <br />
+              Precision.
+            </h3>
             {rawBio ? (
               <RichText
                 content={rawBio}
@@ -61,15 +70,6 @@ export const About = () => {
             ) : (
               // Fallback content while loading or if data is missing
               <>
-                <h3 className="text-4xl font-display font-black uppercase mb-8 leading-tight text-(--fg)">
-                  Engineering
-                  <br />
-                  Scalable Web Interfaces
-                  <br />
-                  with Industrial
-                  <br />
-                  Precision.
-                </h3>
                 <p>
                   I solve complexity with components. With 6+ years across the
                   stack, I specialize in building UI systems that don't just
