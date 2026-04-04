@@ -3,6 +3,15 @@ import { SocialIcon } from "react-social-icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "../../ui/theme-toggle";
 import { useThemeContext } from "../../../../app/providers/theme-provider";
+import { useQuery } from "urql";
+
+const GET_NAV_PROFILE = `
+  query GetNavProfile {
+    profiles(first: 1) {
+      socialLinks
+    }
+  }
+`;
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,6 +19,20 @@ export const Navbar = () => {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const { theme } = useThemeContext();
   const isDark = theme === "dark";
+
+  const [result] = useQuery({ query: GET_NAV_PROFILE });
+  const { data } = result;
+
+  const socialLinks = data?.profiles?.[0]?.socialLinks || {};
+
+  const xUrl =
+    socialLinks.x || `https://x.com/${import.meta.env.VITE_CONTACT_X_USER}`;
+  const githubUrl =
+    socialLinks.github ||
+    `https://github.com/${import.meta.env.VITE_CONTACT_GITHUB_USER}`;
+  const linkedinUrl =
+    socialLinks.linkedin ||
+    `https://www.linkedin.com/in/${import.meta.env.VITE_CONTACT_LINKEDIN_ID}`;
 
   const navLinks = [
     { name: "Work", href: "#work" },
@@ -66,7 +89,7 @@ export const Navbar = () => {
             </button>
             <div className="hidden sm:flex gap-1 items-center">
               <SocialIcon
-                url={`https://x.com/${import.meta.env.VITE_CONTACT_X_USER}`}
+                url={xUrl}
                 target="_blank"
                 bgColor="transparent"
                 fgColor={iconFgColor}
@@ -74,7 +97,7 @@ export const Navbar = () => {
                 className="hover:opacity-100 opacity-60 transition-opacity"
               />
               <SocialIcon
-                url={`https://github.com/${import.meta.env.VITE_CONTACT_GITHUB_USER}`}
+                url={githubUrl}
                 target="_blank"
                 bgColor="transparent"
                 fgColor={iconFgColor}
@@ -82,7 +105,7 @@ export const Navbar = () => {
                 className="hover:opacity-100 opacity-60 transition-opacity"
               />
               <SocialIcon
-                url={`https://www.linkedin.com/in/${import.meta.env.VITE_CONTACT_LINKEDIN_ID}`}
+                url={linkedinUrl}
                 target="_blank"
                 bgColor="transparent"
                 fgColor={iconFgColor}
@@ -159,19 +182,19 @@ export const Navbar = () => {
                 className="flex gap-4 items-center"
               >
                 <SocialIcon
-                  url={`https://x.com/${import.meta.env.VITE_CONTACT_X_USER}`}
+                  url={xUrl}
                   bgColor="transparent"
                   fgColor={menuIconFgColor}
                   style={{ width: 40, height: 40 }}
                 />
                 <SocialIcon
-                  url={`https://github.com/${import.meta.env.VITE_CONTACT_GITHUB_USER}`}
+                  url={githubUrl}
                   bgColor="transparent"
                   fgColor={menuIconFgColor}
                   style={{ width: 40, height: 40 }}
                 />
                 <SocialIcon
-                  url={`https://www.linkedin.com/in/${import.meta.env.VITE_CONTACT_LINKEDIN_ID}`}
+                  url={linkedinUrl}
                   bgColor="transparent"
                   fgColor={menuIconFgColor}
                   style={{ width: 40, height: 40 }}

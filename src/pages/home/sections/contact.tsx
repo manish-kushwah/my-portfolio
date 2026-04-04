@@ -12,7 +12,31 @@ type ContactForm = {
   message: string;
 };
 
+import { useQuery } from "urql";
+
+const GET_PROFILE = `
+  query GetProfile {
+    profiles(first: 1) {
+      email
+      resume {
+        url
+      }
+    }
+  }
+`;
+
 export const Contact = () => {
+  const [result] = useQuery({ query: GET_PROFILE });
+  const { data, error } = result;
+
+  if (error) console.error("Hygraph GraphQL Error (Contact):", error);
+  // Uncomment to debug the raw data:
+  // console.log("Hygraph Profile Data:", data);
+
+  const profile = data?.profiles?.[0];
+  const resumeUrl = profile?.resume?.url;
+  const contactEmail = profile?.email || import.meta.env.VITE_CONTACT_EMAIL;
+
   const {
     register,
     handleSubmit,
@@ -52,7 +76,6 @@ export const Contact = () => {
       toast.error("Network error. Try again later.");
     }
   };
-
 
   return (
     <section
@@ -120,7 +143,7 @@ export const Contact = () => {
               }}
             >
               <a
-                href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}
+                href={`mailto:${contactEmail}`}
                 className="w-14 h-14 border border-(--border) rounded-sharp flex items-center justify-center bg-(--surface-2) wave-fill transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group shadow-sm hover:shadow-[0_4px_20px_rgba(85,88,232,0.15)]"
               >
                 <FiMail className="w-5 h-5 text-(--muted) group-hover:text-white/90 dark:group-hover:text-white transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
@@ -162,8 +185,9 @@ export const Contact = () => {
               }}
             >
               <a
-                href="#"
-                onClick={(e) => e.preventDefault()}
+                href={resumeUrl || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-14 h-14 border border-(--border) rounded-sharp flex items-center justify-center bg-(--surface-2) wave-fill transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group shadow-sm hover:shadow-[0_4px_20px_rgba(85,88,232,0.15)]"
               >
                 <FiDownload className="w-5 h-5 text-(--muted) group-hover:text-white/90 dark:group-hover:text-white transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
@@ -251,13 +275,14 @@ export const Contact = () => {
             </div>
             <button
               disabled={isSubmitting}
-              style={{
-                backgroundColor: "color-mix(in srgb, var(--accent), transparent 10%)",
-                "--wave-bg": "color-mix(in srgb, var(--accent), black 12%)",
-              } as React.CSSProperties}
-              className="relative wave-fill text-white! px-10 py-5 rounded-sharp mono cursor-pointer text-[11px] font-black uppercase active:scale-[0.98] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-[0_4px_30px_rgba(109,112,255,0.4)] overflow-hidden group border-none"
+              style={
+                {
+                  "--wave-bg": "var(--accent)",
+                } as React.CSSProperties
+              }
+              className="relative wave-fill bg-transparent text-(--accent) px-10 py-5 rounded-sharp mono cursor-pointer text-[11px] font-black uppercase active:scale-[0.98] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-[0_8px_30px_rgba(109,112,255,0.4)] overflow-hidden group border border-(--accent)"
             >
-              <span className="relative z-10 transition-colors duration-500 font-bold tracking-widest!">
+              <span className="relative z-10 transition-colors duration-500 font-bold tracking-widest! group-hover:text-white!">
                 {isSubmitting ? "Sending..." : "Send Message"}
               </span>
             </button>

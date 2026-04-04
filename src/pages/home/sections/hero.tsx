@@ -1,7 +1,24 @@
 import { motion } from "framer-motion";
 import { GeometricBird } from "../../../shared/components/ui/geometric-bird";
+import { useQuery } from "urql";
+import { RichText } from "@graphcms/rich-text-react-renderer";
+
+const GET_HERO_PROFILE = `
+  query GetHeroProfile {
+    profiles(first: 1) {
+      tagline {
+        raw
+      }
+    }
+  }
+`;
 
 export const Hero = () => {
+  const [result] = useQuery({ query: GET_HERO_PROFILE });
+  const { data } = result;
+
+  const rawTagline = data?.profiles?.[0]?.tagline?.raw;
+
   return (
     <section className="relative pt-48 pb-32 px-8 md:px-10 overflow-hidden">
       <GeometricBird />
@@ -80,14 +97,29 @@ export const Hero = () => {
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-start gap-10">
-            <p className="lg:max-w-md max-w-full text-lg text-(--muted)/80 leading-relaxed font-medium">
-              6+ years of building{" "}
-              <span className="text-(--fg)">
-                high-performance UI systems
-              </span>
-              . Expert in component-driven architecture, bundler optimization
-              (Webpack/RSpack), and scalable frontend platforms.
-            </p>
+            <div className="lg:max-w-md max-w-full text-lg text-(--muted)/80 leading-relaxed font-medium">
+              {rawTagline ? (
+                <RichText
+                  content={rawTagline}
+                  renderers={{
+                    p: ({ children }) => <p>{children}</p>,
+                    bold: ({ children }) => (
+                      <span className="font-bold text-(--fg)">{children}</span>
+                    ),
+                  }}
+                />
+              ) : (
+                <p>
+                  6+ years of building{" "}
+                  <span className="text-(--fg)">
+                    high-performance UI systems
+                  </span>
+                  . Expert in component-driven architecture, bundler
+                  optimization (Webpack/RSpack), and scalable frontend
+                  platforms.
+                </p>
+              )}
+            </div>
             <div className="flex gap-4">
               <div className="h-24 w-44 bg-(--surface-3)/50 backdrop-blur-sm border border-(--border)/50 rounded-sharp flex flex-col justify-start px-6 group hover:border-(--accent)/40 transition-colors">
                 <span className="mono text-[10px] text-(--muted) mb-1 uppercase tracking-tight">
