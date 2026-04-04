@@ -1,54 +1,67 @@
-# React + TypeScript + Vite
+# Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-performance personal portfolio website built with an "Industrial Minimalist" aesthetic. This project showcases dynamic animations, seamless theme switching, and a robust CMS-driven architecture.
 
-Currently, two official plugins are available:
+## 📸 Previews
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<div align="center">
+  <img src="https://ap-south-1.graphassets.com/cmnc9hweq12c407pi0hku5t2t/cmnkygycx7zda07pn9twdlfy2" alt="About Section Profile" width="800" />
+</div>
+<br />
+<div align="center">
+  <img src="https://ap-south-1.graphassets.com/cmnc9hweq12c407pi0hku5t2t/cmnkyiivr7zg507pn6x8avaje" alt="Portfolio Light Theme" width="400" />
+  <img src="https://ap-south-1.graphassets.com/cmnc9hweq12c407pi0hku5t2t/cmnkyiito7zfy07pnmnfwog75" alt="Portfolio Dark Theme" width="400" />
+</div>
+![alt text](image.png)
+## 🚀 Tech Stack
 
-## Expanding the ESLint configuration
+- **Framework**: React 19 + TypeScript + Vite
+- **Styling**: Tailwind CSS v4, Mantine (Core & Hooks)
+- **Animations**: Framer Motion (Geometric bird background animations, SVG path morphing) & Lenis (Smooth Scrolling)
+- **CMS & Data**: Hygraph (GraphQL headless CMS), `urql` for data fetching, `@graphcms/rich-text-react-renderer`
+- **Forms & Interactions**: React Hook Form, React Hot Toast, React Icons
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Key Features
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Industrial Minimalist Design**: A curated, sophisticated aesthetic with standardized layouts and geometric elements.
+- **Dynamic Framer Motion Animations**: Features an intricate "Architect's Bird" SVG path morphing background effect in the Hero section that is responsive and performant.
+- **CMS-Driven Architecture**: The Projects and About sections are fully integrated with Hygraph, enabling dynamic updating of portfolio content without code changes. Features custom GraphQL queries for project data (e.g., `projectTitle`, `projectAbout`, `projectTasks`, `projectMetrics`).
+- **Robust Theming System**: Seamless Light and Dark mode integration utilizing React context and CSS variables to match user preferences across all components.
+- **Responsive Navigation**: Mobile-optimized layouts featuring a responsive hamburger menu for enhanced accessibility.
+- **Smooth User Experience**: Integrated smooth scrolling and polished micro-animations across Hero, About, Skills, Projects, Systems, and Contact sections.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Make sure you have Node.js and npm installed on your machine. You will also need to configure your environment variables for the CMS endpoint.
+
+### Installation
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+3. Build for production:
+   ```bash
+   npm run build
+   ```
+
+## 🏗️ Project Structure
+
+- `src/pages/` - Core application pages and section components (Hero, About, Skills, Projects, Systems, Contact).
+- `src/components/` - Reusable UI elements, icons, and theme toggles.
+- `src/context/` - React contexts (e.g., Theme management).
+- `src/graphql/` - GraphQL queries and configurations for Hygraph CMS integration.
+
+## 📝 License
+
+This project is private and intended as a personal portfolio.
