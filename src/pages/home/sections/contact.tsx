@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { SocialIcon } from "react-social-icons";
 import { useThemeContext } from "../../../app/providers/theme-provider";
+import { Tooltip } from "@mantine/core";
+import { FiDownload, FiMail } from "react-icons/fi";
 
 type ContactForm = {
   name: string;
@@ -52,7 +53,6 @@ export const Contact = () => {
     }
   };
 
-  const iconFgColor = isDark ? "#737373" : "#52525b";
 
   return (
     <section
@@ -84,17 +84,91 @@ export const Contact = () => {
             open-source collaborations. Currently focusing on the 2026-level web
             standard.
           </p>
-          <div className="flex flex-col gap-6">
-            <div className="group flex items-center justify-start cursor-pointer">
-              <span className="mono text-[9px] text-(--accent) block">Email: </span>
-              <SocialIcon
-                url={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}
-                bgColor="transparent"
-                fgColor={iconFgColor}
-                style={{ width: 40, height: 40 }}
-                className="hover:opacity-100 opacity-60 transition-opacity shrink-0 cursor-pointer"
-              />
-            </div>
+          <div className="flex flex-row gap-4 items-center">
+            <Tooltip
+              label="Open Mailbox"
+              withArrow
+              position="top"
+              offset={10}
+              transitionProps={{
+                transition: "skew-down",
+                duration: 300,
+              }}
+              styles={{
+                tooltip: {
+                  backgroundColor: isDark
+                    ? "#3f3f3f"
+                    : "color-mix(in srgb, var(--accent), transparent 50%)",
+                  backdropFilter: "blur(8px)",
+                  color: "#fff",
+                  fontSize: "9px",
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  padding: "6px 12px",
+                  borderRadius: "2px",
+                  border: isDark
+                    ? "1px solid rgba(255, 255, 255, 0.05)"
+                    : "1px solid rgba(255, 255, 255, 0.1)",
+                },
+                arrow: {
+                  border: "none",
+                  backgroundColor: isDark
+                    ? "#3f3f3f"
+                    : "color-mix(in srgb, var(--accent), transparent 50%)",
+                },
+              }}
+            >
+              <a
+                href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}
+                className="w-14 h-14 border border-(--border) rounded-sharp flex items-center justify-center bg-(--surface-2) wave-fill transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group shadow-sm hover:shadow-[0_4px_20px_rgba(85,88,232,0.15)]"
+              >
+                <FiMail className="w-5 h-5 text-(--muted) group-hover:text-white/90 dark:group-hover:text-white transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+              </a>
+            </Tooltip>
+
+            <Tooltip
+              label="Download Resume"
+              withArrow
+              position="top"
+              offset={10}
+              transitionProps={{
+                transition: "skew-down",
+                duration: 300,
+              }}
+              styles={{
+                tooltip: {
+                  backgroundColor: isDark
+                    ? "#3f3f3f"
+                    : "color-mix(in srgb, var(--accent), transparent 50%)",
+                  backdropFilter: "blur(8px)",
+                  color: "#fff",
+                  fontSize: "9px",
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  padding: "6px 12px",
+                  borderRadius: "2px",
+                  border: isDark
+                    ? "1px solid rgba(255, 255, 255, 0.05)"
+                    : "1px solid rgba(255, 255, 255, 0.1)",
+                },
+                arrow: {
+                  border: "none",
+                  backgroundColor: isDark
+                    ? "#3f3f3f"
+                    : "color-mix(in srgb, var(--accent), transparent 50%)",
+                },
+              }}
+            >
+              <a
+                href="#"
+                onClick={(e) => e.preventDefault()}
+                className="w-14 h-14 border border-(--border) rounded-sharp flex items-center justify-center bg-(--surface-2) wave-fill transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group shadow-sm hover:shadow-[0_4px_20px_rgba(85,88,232,0.15)]"
+              >
+                <FiDownload className="w-5 h-5 text-(--muted) group-hover:text-white/90 dark:group-hover:text-white transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+              </a>
+            </Tooltip>
           </div>
         </div>
 
@@ -108,7 +182,7 @@ export const Contact = () => {
                 <input
                   type="text"
                   {...register("name", { required: "Name is required" })}
-                  className={`w-full bg-transparent border-b ${errors.name ? "border-red-500" : "border-(--border)"} py-2 focus:border-(--accent) outline-none font-medium text-(--fg) placeholder:text-(--muted)/30`}
+                  className={`w-full bg-transparent border-b ${errors.name ? "border-red-500" : "border-(--border)"} py-2 input-wave font-medium text-(--fg) placeholder:text-(--muted)/30`}
                   placeholder="John Doe"
                 />
                 {errors.name && (
@@ -130,7 +204,7 @@ export const Contact = () => {
                       message: "Invalid email address",
                     },
                   })}
-                  className={`w-full bg-transparent border-b ${errors.email ? "border-red-500" : "border-(--border)"} py-2 focus:border-(--accent) outline-none font-medium text-(--fg) placeholder:text-(--muted)/30`}
+                  className={`w-full bg-transparent border-b ${errors.email ? "border-red-500" : "border-(--border)"} py-2 input-wave font-medium text-(--fg) placeholder:text-(--muted)/30`}
                   placeholder="john@example.com"
                 />
                 {errors.email && (
@@ -147,7 +221,7 @@ export const Contact = () => {
               <input
                 type="text"
                 {...register("subject", { required: "Subject is required" })}
-                className={`w-full bg-transparent border-b ${errors.subject ? "border-red-500" : "border-(--border)"} py-2 focus:border-(--accent) outline-none font-medium text-(--fg) placeholder:text-(--muted)/30`}
+                className={`w-full bg-transparent border-b ${errors.subject ? "border-red-500" : "border-(--border)"} py-2 input-wave font-medium text-(--fg) placeholder:text-(--muted)/30`}
                 placeholder="Architectural Consultation"
               />
               {errors.subject && (
@@ -166,7 +240,7 @@ export const Contact = () => {
                   required: "Message is required",
                   minLength: { value: 10, message: "Min 10 characters" },
                 })}
-                className={`w-full bg-transparent border-b ${errors.message ? "border-red-500" : "border-(--border)"} py-2 resize-none focus:border-(--accent) outline-none font-medium text-(--fg) placeholder:text-(--muted)/30`}
+                className={`w-full bg-transparent border-b ${errors.message ? "border-red-500" : "border-(--border)"} py-2 resize-none input-wave font-medium text-(--fg) placeholder:text-(--muted)/30`}
                 placeholder="How can I help you scale?"
               />
               {errors.message && (
@@ -177,9 +251,15 @@ export const Contact = () => {
             </div>
             <button
               disabled={isSubmitting}
-              className="bg-(--accent) text-white px-8 py-4 rounded-sharp mono cursor-pointer text-[11px] font-black uppercase hover:bg-(--accent-hover) active:scale-[0.98] transition-all duration-300 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_20px_rgba(109,112,255,0.2)] hover:shadow-[0_4px_25px_rgba(109,112,255,0.4)]"
+              style={{
+                backgroundColor: "color-mix(in srgb, var(--accent), transparent 10%)",
+                "--wave-bg": "color-mix(in srgb, var(--accent), black 12%)",
+              } as React.CSSProperties}
+              className="relative wave-fill text-white! px-10 py-5 rounded-sharp mono cursor-pointer text-[11px] font-black uppercase active:scale-[0.98] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-[0_4px_30px_rgba(109,112,255,0.4)] overflow-hidden group border-none"
             >
-              {isSubmitting ? "Sending..." : "Send Message"}
+              <span className="relative z-10 transition-colors duration-500 font-bold tracking-widest!">
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </span>
             </button>
           </form>
         </div>
