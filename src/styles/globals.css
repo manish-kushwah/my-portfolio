@@ -1,0 +1,209 @@
+@import "tailwindcss";
+@import "@mantine/core/styles.css";
+
+@theme {
+  --color-primary: #0a0a0a;
+  --color-secondary: #fafafa;
+  --color-accent: #6d70ff;
+  --color-accent-hover: #8e91ff;
+  --color-accent-soft: rgba(109, 112, 255, 0.1);
+  --color-muted: #737373;
+  --color-border: #262626;
+  --color-zinc-900: #18181b;
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Geist Sans", "Inter Tight", sans-serif;
+
+  --radius-sharp: 2px;
+  --radius-base: 4px;
+}
+
+/* ─── DARK THEME (default) ─────────────────────────────────────── */
+:root {
+  color-scheme: dark;
+
+  --bg: #09090b;
+  --fg: #e4e4e7;
+  --border: #262626;
+  --muted: #737373;
+  --accent: #6d70ff;
+  --accent-hover: #8e91ff;
+  --accent-soft: rgba(109, 112, 255, 0.1);
+
+  /* Surfaces */
+  --surface-1: #09090b;   /* page bg */
+  --surface-2: #111113;   /* cards, panels */
+  --surface-3: #18181b;   /* elevated / zinc-900 */
+  --surface-4: #1c1c1f;   /* zinc-950 */
+
+  /* For sections with explicit dark bg overrides */
+  --section-alt: #000000;
+  --section-dark: #09090b;
+
+  --grid-opacity: 0.03;
+  --scanline-color: rgba(109, 112, 255, 0.2);
+
+  /* Toast */
+  --toast-bg: #0a0a0a;
+  --toast-fg: #ededed;
+  --toast-border: #262626;
+}
+
+/* ─── LIGHT THEME ────────────────────────────────────────────────── */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #fafafa;
+  --fg: #27272a;
+  --border: #d4d4d8;
+  --muted: #71717a;
+  --accent: #5558e8;
+  --accent-hover: #4446cc;
+  --accent-soft: rgba(85, 88, 232, 0.08);
+
+  --surface-1: #f5f5f7;
+  --surface-2: #ffffff;
+  --surface-3: #f0f0f2;
+  --surface-4: #e8e8ec;
+
+  --section-alt: #eaeaee;
+  --section-dark: #f0f0f4;
+
+  --grid-opacity: 0.06;
+  --scanline-color: rgba(85, 88, 232, 0.15);
+
+  --toast-bg: #ffffff;
+  --toast-fg: #0a0a0a;
+  --toast-border: #d4d4d8;
+}
+
+/* ─── BASE STYLES ────────────────────────────────────────────────── */
+:root {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+::selection {
+  background-color: rgba(109, 112, 255, 0.3);
+  color: var(--fg);
+}
+
+[data-theme="light"] ::selection {
+  background-color: rgba(85, 88, 232, 0.2);
+  color: var(--fg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+/* Typography Scale */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  letter-spacing: -0.01em;
+}
+
+/* ─── INDUSTRIAL GRID ─────────────────────────────────────────────── */
+.grid-paper {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: var(--grid-opacity);
+}
+
+/* ─── THEME-AWARE UTILITY CLASSES ─────────────────────────────────── */
+
+/* Backgrounds */
+.bg-theme-base    { background-color: var(--bg); }
+.bg-theme-surface { background-color: var(--surface-2); }
+.bg-theme-raised  { background-color: var(--surface-3); }
+.bg-theme-alt     { background-color: var(--section-alt); }
+.bg-theme-dark    { background-color: var(--section-dark); }
+
+/* Text */
+.text-theme-fg    { color: var(--fg); }
+.text-theme-muted { color: var(--muted); }
+.text-theme-accent { color: var(--accent); }
+
+/* Borders */
+.border-theme     { border-color: var(--border); }
+
+/* ─── SCROLLBAR ────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* ─── ANIMATIONS ───────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+/* ─── INPUT ANIMATIONS ────────────────────────────────────────────── */
+.input-wave {
+  outline: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.input-wave:focus {
+  background-size: 100% 1px;
+}
+
+/* ─── WAVE FILL ───────────────────────────────────────────────────── */
+.wave-fill {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.wave-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--wave-bg, var(--accent));
+  transform: translate(-100%, 100%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.wave-fill:hover::after {
+  transform: translate(0, 0);
+}
