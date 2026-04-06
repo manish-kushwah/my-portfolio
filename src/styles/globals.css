@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "tailwind-scrollbar";
 @import "@mantine/core/styles.css";
 
 @theme {
@@ -148,17 +149,12 @@ h1, h2, h3 {
 .border-theme     { border-color: var(--border); }
 
 /* ─── SCROLLBAR ────────────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 6px;
+@utility scrollbar-custom {
+  @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-accent;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 3px;
+html {
+  @apply scrollbar-custom;
 }
 
 /* ─── ANIMATIONS ───────────────────────────────────────────────────── */
