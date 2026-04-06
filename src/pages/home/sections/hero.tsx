@@ -59,36 +59,130 @@ export const Hero = () => {
 
           <div className="relative group mb-10">
             {/* Base Heading */}
-            <h1 className="text-[clamp(3.5rem,12vw,9rem)] leading-[0.85] tracking-tighter uppercase font-black -ml-2 text-(--fg) drop-shadow-sm">
-              Frontend
-              <br />
-              Engineer.
+            <h1 className="text-[clamp(3.5rem,12vw,9rem)] leading-[0.85] uppercase font-black -ml-2 text-(--fg) drop-shadow-sm">
+              <motion.span
+                className="block"
+                initial={{
+                  x: "-15%",
+                  opacity: 0,
+                  filter: "blur(15px)",
+                  letterSpacing: "0.2em",
+                  scale: 1.05,
+                }}
+                whileInView={{
+                  x: 0,
+                  opacity: 1,
+                  filter: "blur(0px)",
+                  letterSpacing: "0.0em",
+                  scale: 1,
+                }}
+                viewport={{ once: true }}
+                transition={{ duration: 3, ease: [0.22, 1, 0.36, 1] }}
+              >
+                Frontend
+              </motion.span>
+              <motion.span
+                className="block"
+                initial={{
+                  x: "15%",
+                  opacity: 0,
+                  filter: "blur(15px)",
+                  letterSpacing: "0.2em",
+                  scale: 1.05,
+                }}
+                whileInView={{
+                  x: 0,
+                  opacity: 1,
+                  filter: "blur(0px)",
+                  letterSpacing: "0.0em",
+                  scale: 1,
+                }}
+                viewport={{ once: true }}
+                transition={{ duration: 3, ease: [0.22, 1, 0.36, 1] }}
+              >
+                Engineer.
+              </motion.span>
             </h1>
 
             {/* Smooth Shine Highlight Effect */}
-            <motion.h1
-              className="absolute inset-0 text-[clamp(3.5rem,12vw,9rem)] leading-[0.85] tracking-tighter uppercase font-black -ml-2 pointer-events-none select-none"
-              style={{
-                WebkitTextFillColor: "transparent",
-                WebkitBackgroundClip: "text",
-                backgroundImage:
-                  "linear-gradient(90deg, transparent 20%, var(--accent) 50%, transparent 80%)",
-                backgroundSize: "200% 100%",
-              }}
-              animate={{
-                backgroundPosition: ["200% 0", "-200% 0"],
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                ease: "easeInOut",
-                repeatDelay: 5,
-              }}
-            >
-              Frontend
-              <br />
-              Engineer.
-            </motion.h1>
+            <h1 className="absolute inset-0 text-[clamp(3.5rem,12vw,9rem)] leading-[0.85] tracking-normal! uppercase font-black -ml-2 pointer-events-none select-none">
+              <motion.span
+                className="block"
+                style={{
+                  WebkitTextFillColor: "transparent",
+                  WebkitBackgroundClip: "text",
+                  backgroundImage:
+                    "linear-gradient(90deg, transparent 20%, var(--accent) 50%, transparent 80%)",
+                  backgroundSize: "200% 100%",
+                }}
+                initial={{
+                  x: "-15%",
+                  opacity: 0,
+                  filter: "blur(15px)",
+                  letterSpacing: "0.2em",
+                  scale: 1.05,
+                  backgroundPosition: "200% 0",
+                }}
+                whileInView={{
+                  x: 0,
+                  opacity: 1,
+                  filter: "blur(0px)",
+                  letterSpacing: "0.0em",
+                  scale: 1,
+                  backgroundPosition: "-200% 0",
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 3,
+                  ease: [0.22, 1, 0.36, 1],
+                  backgroundPosition: {
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear",
+                  },
+                }}
+              >
+                Frontend
+              </motion.span>
+              <motion.span
+                className="block"
+                style={{
+                  WebkitTextFillColor: "transparent",
+                  WebkitBackgroundClip: "text",
+                  backgroundImage:
+                    "linear-gradient(90deg, transparent 20%, var(--accent) 50%, transparent 80%)",
+                  backgroundSize: "200% 100%",
+                }}
+                initial={{
+                  x: "15%",
+                  opacity: 0,
+                  filter: "blur(15px)",
+                  letterSpacing: "0.2em",
+                  scale: 1.05,
+                  backgroundPosition: "200% 0",
+                }}
+                whileInView={{
+                  x: 0,
+                  opacity: 1,
+                  filter: "blur(0px)",
+                  letterSpacing: "0.0em",
+                  scale: 1,
+                  backgroundPosition: "-200% 0",
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 3,
+                  ease: [0.22, 1, 0.36, 1],
+                  backgroundPosition: {
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear",
+                  },
+                }}
+              >
+                Engineer.
+              </motion.span>
+            </h1>
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-start gap-10">
