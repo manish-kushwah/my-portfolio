@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FADE_UP_ANIMATION } from "../../../shared/constants/animations";
 import { TECH_DATA } from "../../../shared/constants/tech-data";
 import { useQuery } from "urql";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
@@ -63,10 +64,7 @@ export const Projects = () => {
           {data?.projects.map((project, i) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
-              viewport={{ once: true, margin: "-15%" }}
+              {...FADE_UP_ANIMATION}
               className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start"
             >
               <div className="lg:col-span-5">

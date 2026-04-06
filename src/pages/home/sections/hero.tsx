@@ -13,6 +13,8 @@ const GET_HERO_PROFILE = `
   }
 `;
 
+import { FADE_UP_ANIMATION } from "../../../shared/constants/animations";
+
 export const Hero = () => {
   const [result] = useQuery({ query: GET_HERO_PROFILE });
   const { data } = result;
@@ -50,14 +52,7 @@ export const Hero = () => {
       </div>
 
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 1.2,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        >
+        <motion.div {...FADE_UP_ANIMATION}>
           <div className="inline-block px-3 py-1 mb-6 border border-(--accent)/20 bg-(--accent)/10 rounded-sharp mono text-[10px] text-(--accent) tracking-widest font-bold uppercase">
             Senior Frontend Engineer @ Waveaxis
           </div>

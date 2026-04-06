@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { FADE_UP_ANIMATION } from "../../../shared/constants/animations";
 import { TECH_DATA } from "../../../shared/constants/tech-data";
 import { useQuery } from "urql";
 
@@ -51,7 +53,10 @@ export const Skills = () => {
       {/* Background Accent Pulse */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-(--accent)/5 blur-[150px] rounded-full pointer-events-none animate-pulse" />
 
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20">
+      <motion.div
+        className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20"
+        {...FADE_UP_ANIMATION}
+      >
         <div className="lg:max-w-xs max-w-full">
           <h2 className="font-display text-[24px] text-(--muted) font-bold uppercase mb-6 tracking-[12px]! lg:tracking-[14px]! leading-loose">
             Skills
@@ -106,7 +111,7 @@ export const Skills = () => {
               );
             })}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

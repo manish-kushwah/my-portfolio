@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FADE_UP_ANIMATION } from "../../../shared/constants/animations";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useThemeContext } from "../../../app/providers/theme-provider";
@@ -86,10 +87,7 @@ export const Contact = () => {
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1/2 h-1/2 bg-(--accent)/2 blur-[120px] rounded-full pointer-events-none -z-10 animate-pulse" />
 
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-10%" }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        {...FADE_UP_ANIMATION}
         className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-20"
       >
         <div className="lg:max-w-md max-w-full">
