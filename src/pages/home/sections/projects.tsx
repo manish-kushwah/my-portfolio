@@ -6,7 +6,7 @@ import { FiGithub, FiExternalLink } from "react-icons/fi";
 
 const GET_PROJECTS = `
   query GetProjects {
-    projects(orderBy: createdAt_DESC) {
+    projects(orderBy: orderNumber_ASC) {
       id
       projectTitle
       role

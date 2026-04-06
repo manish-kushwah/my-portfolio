@@ -1,5 +1,6 @@
 import { Hero } from "./sections/hero";
 import { Systems } from "./sections/systems";
+import { Experience } from "./sections/experience";
 import { Projects } from "./sections/projects";
 import { About } from "./sections/about";
 import { Skills } from "./sections/skills";
@@ -10,6 +11,7 @@ export default function HomePage() {
     <>
       <Hero />
       <Systems />
+      <Experience />
       <Projects />
       <About />
       <Skills />
