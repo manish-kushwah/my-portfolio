@@ -35,6 +35,7 @@ export const Navbar = () => {
     `https://www.linkedin.com/in/${import.meta.env.VITE_CONTACT_LINKEDIN_ID}`;
 
   const navLinks = [
+    { name: "Exp", href: "#experience" },
     { name: "Work", href: "#work" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
