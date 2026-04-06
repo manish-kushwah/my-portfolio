@@ -96,8 +96,11 @@ export const About = () => {
           </div>{" "}
         </motion.div>
 
-        <motion.div {...FADE_UP_ANIMATION} className="relative group">
-          <div className="aspect-8/9 bg-(--surface-3) border border-(--border) rounded-sharp overflow-hidden relative shadow-2xl">
+        <motion.div
+          {...FADE_UP_ANIMATION}
+          className="relative group md:pt-24 md:max-w-sm mx-auto md:ml-auto w-full"
+        >
+          <div className="aspect-4/5 bg-(--surface-3) border border-(--border) rounded-sharp overflow-hidden relative shadow-2xl">
             <div className="absolute inset-0 bg-linear-to-t from-black to-transparent opacity-40 select-none pointer-events-none" />
             <div className="absolute bottom-8 left-8 right-8 z-10">
               <span className="mono text-[10px] text-(--accent) uppercase block mb-2 tracking-tighter">
