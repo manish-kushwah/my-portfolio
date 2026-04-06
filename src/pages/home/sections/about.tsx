@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FADE_UP_ANIMATION } from "../../../shared/constants/animations";
 import profileImg from "../../../assets/images/profile-portrait.jpeg";
 import { useQuery } from "urql";
 import { RichText } from "@graphcms/rich-text-react-renderer";
@@ -25,12 +26,7 @@ export const About = () => {
       className="py-32 px-8 md:px-10 border-t border-(--border) bg-(--surface-3)"
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true, margin: "-10%" }}
-        >
+        <motion.div {...FADE_UP_ANIMATION}>
           <h2 className="font-display text-[24px] text-(--muted) font-bold uppercase mb-12 tracking-[12px]! lg:tracking-[14px]! leading-loose">
             About
           </h2>
@@ -101,13 +97,10 @@ export const About = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true, margin: "-10%" }}
-          className="relative group"
+          {...FADE_UP_ANIMATION}
+          className="relative group md:pt-24 md:max-w-sm mx-auto md:ml-auto w-full"
         >
-          <div className="aspect-8/9 bg-(--surface-3) border border-(--border) rounded-sharp overflow-hidden relative shadow-2xl">
+          <div className="aspect-4/5 bg-(--surface-3) border border-(--border) rounded-sharp overflow-hidden relative shadow-2xl">
             <div className="absolute inset-0 bg-linear-to-t from-black to-transparent opacity-40 select-none pointer-events-none" />
             <div className="absolute bottom-8 left-8 right-8 z-10">
               <span className="mono text-[10px] text-(--accent) uppercase block mb-2 tracking-tighter">
